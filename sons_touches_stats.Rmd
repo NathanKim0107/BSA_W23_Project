@@ -1,0 +1,143 @@
+---
+title: "BSA_Project_Son"
+author: "Nathan Kim"
+date: "2023-03-11"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+---
+
+```{r Son_Touch_Data}
+
+son_touches <- read.csv("/Users/natha/Son_Posession_Data.csv")
+
+son_touches
+
+```
+
+## T-Test for Son's Touches
+
+$$
+
+Null: Mean = mean(Touches.per.90) \\
+
+Alternative != mean(Touches.per.90) \\
+
+Null: Mean = mean(Mid.3rd.Touches.per.90) \\
+
+Alternative != mean(Mid.3rd.Touches.per.90) \\
+
+Null: Mean = mean(Att.3rd.Touches.per.90) \\
+
+Alternative != mean(Att.3rd.Touches.per.90) \\
+
+Null: Mean = mean(Att.Pen.Touches.per.90) \\
+
+Alternative != mean(Att.Pen.Touches.per.90) \\
+
+
+$$
+
+
+```{r touches t test}
+
+attach(son_touches)
+
+summary(Touches.per.90)
+
+summary(Mid.3rd.Touches.per.90)
+
+summary(Att.3rd.Touches.per.90)
+
+summary(Att.Pen.Touches.per.90)
+
+t.test(Touches.per.90, mu = 40.4) 
+
+# p-value: 0.0123 < 0.05. Reject the Null Hypothesis 
+
+t.test(Mid.3rd.Touches.per.90, mu = 15) 
+
+# p-value: 0.009092 < 0.05. Reject the Null Hypothesis 
+
+t.test(Att.3rd.Touches.per.90, mu = 21.9)
+
+# p value 0.0714 > 0.05. Fail to reject the Null Hypothesis
+
+t.test(Att.Pen.Touches.per.90, mu = 3.16)
+
+# 0.02115 < 0.05 Reject the Null Hypothesis
+
+```
+
+
+## T test for Son's Carries/Passes
+
+
+$$
+
+Null: Mean = mean(Carries.into.Penalty.Area.per.90) \\
+
+Alternative != mean(Carries.into.Penalty.Area.per.90) \\ 
+
+$$
+
+
+```{r carries/passes t test}
+
+attach(son_touches)
+
+summary(Carries.into.Penalty.Area.per.90)
+
+t.test(Carries.into.Penalty.Area.per.90, mu = 0.87)
+
+# p value 0.03188 < 0.05 Reject the Null Hypothesis
+
+summary(Progressive.Carries.per.90)
+
+t.test(Progressive.Carries.per.90, mu = 3.01)
+
+# p value of 0.1631 > 0.05 Fail to Reject the Null Hypothesis
+
+summary(Carries.into.Final.3rd.per.90)
+
+t.test(Carries.into.Final.3rd.per.90, mu = 2.09)
+
+# p value of 0.5931 > 0.05 Fail to reject the Null Hypothesis
+
+summary(Progress.Passes.Received.per.90)
+
+t.test(Progress.Passes.Received.per.90, mu = 6.70)
+
+# p value of 0.1089 > 0.05 Fail to reject the Null Hypothesis
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+```{r passes received}
+
+attach(son_touches)
+
+
+summary(Passes.Received.per.90)
+
+t.test(Passes.Received.per.90, mu = 28.1) # this season 
+
+t.test(Passes.Received.per.90, mu = 32.3) # last season
+
+```
+
+```{r}
+
+```
+
